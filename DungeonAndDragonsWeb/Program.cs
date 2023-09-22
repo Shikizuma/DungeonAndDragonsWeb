@@ -1,3 +1,5 @@
+using DungeonAndDragonsWeb.Hubs;
+
 namespace DungeonAndDragonsWeb
 {
     public class Program
@@ -9,6 +11,7 @@ namespace DungeonAndDragonsWeb
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -30,6 +33,11 @@ namespace DungeonAndDragonsWeb
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<BattleHub>("/battle");
+            });
 
             app.Run();
         }
