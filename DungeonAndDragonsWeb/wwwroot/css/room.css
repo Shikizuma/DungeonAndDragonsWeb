@@ -1,0 +1,56 @@
+﻿
+body {
+    padding: 20px;
+}
+
+#app {
+    max-width: 100%;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+    .styled-table thead tr {
+        background-color: #000000;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table tbody {
+        background-color: #f3f3f3;
+        font-weight: bold;
+        color: #000000;
+    }   
+
+    .styled-table :where(th, td) {
+        padding: 12px 15px;
+    }
+
+    .styled-table :where(th:not(:last-child)) {
+        border-right: 1px solid #444;
+    }
+    .styled-table :where(td:not(:last-child)) {
+        border-right: 1px solid #ddd;
+    }
+
+    .styled-table tbody tr {   
+        border-bottom: 1px solid #ddd;
+    }
+
+        .styled-table tbody td:first-child {
+            max-width: 400px;
+            word-wrap: anywhere;
+        }
+
+        .styled-table tbody tr:hover td {
+            background-color: #ccc;
+        }
+
+    

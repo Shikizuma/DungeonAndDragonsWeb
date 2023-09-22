@@ -37,6 +37,7 @@ namespace DungeonAndDragonsWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<BattleHub>("/battle");
+                endpoints.MapHub<RoomHub>("/room");
             });
 
             app.Run();

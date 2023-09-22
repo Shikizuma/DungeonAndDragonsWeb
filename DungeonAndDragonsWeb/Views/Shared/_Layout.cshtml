@@ -4,17 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DungeonAndDragonsWeb</title>
+    <link rel="stylesheet" href="~/css/room.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 </head>
 <body>
    
 @RenderBody()
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
-    <script src="~/js/a-star.js" asp-append-version="true"></script>
-    <script src="~/js/speak.js" asp-append-version="true"></script>
-    <script src="~/js/microphone.js" asp-append-version="true"></script>
-    <script src="~/js/script.js" asp-append-version="true"></script>
+   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

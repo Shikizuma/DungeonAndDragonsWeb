@@ -1,0 +1,65 @@
+﻿<div id="app">
+    <div class="map-wrap"
+         v-on:mousedown="MapDown"
+         v-on:mousemove="MapMove"
+         v-on:mouseup="MapUp"
+         v-bind:style="styleMapBackground">
+        <div class="map">
+            <div class="row"
+                 v-if="showMapCells"
+                 v-for="(row, rowIndex) in rows">
+                <div class="cell"
+                     v-for="(cell, columnIndex) in row"
+                     v-bind:style="styleCell"
+                     v-bind:class="MapClass(rowIndex, columnIndex)"
+                     v-on:mouseover="HeroHover(rowIndex, columnIndex)"
+                     v-on:click="HeroMove(rowIndex, columnIndex)">
+                </div>
+            </div>
+            <img class="entity"
+                 v-for="entity in entities"
+                 v-bind:style="EntityStyle(entity)"
+                 v-bind:src="entity.src" />
+        </div>
+
+    </div>
+    <div class="game-panel">
+        <div class="person-portret">
+            <div class="person-portret__container">
+                <img class="person-portret__img" src="image/person/heroPortret1.png" alt="" />
+                <svg class="person-portret__diagramm">
+                    <clipPath id="healthClip">
+                        <rect y="10" x="-50" width="160" height="160"></rect>
+                    </clipPath>
+                    <circle class="diagramm-line stamina-line" cx="80" cy="80" r="70" v-bind:style="{'stroke-dasharray': `${entities[0].stamina * 4.5} 450`}"></circle>
+                    <circle class="diagramm-line health-line" cx="80" cy="80" r="77" v-bind:style="{'stroke-dasharray':`${entities[0].health * 5} 500`}"></circle>
+                    <circle class="life-portret" clip-path="url(#healthClip)" cx="80" cy="80" r="67"></circle>
+                </svg>
+            </div>
+        </div>
+        <div class="game-panel__spells">
+            <div class="game-spell">
+                <div v-for="spell in entities[0].spells" class="spell">
+                    <img v-bind:src="spell.src"
+                         v-on:click="InterfaceClick(spell.method)"
+                         v-bind:title="spell.title" />
+                </div>
+            </div>
+            <div class="game-action">
+                <div v-for="action in entities[0].actions" class="spell">
+                    <img v-bind:src="action.src"
+                         v-on:click="InterfaceClick(action.method)"
+                         v-bind:title="action.title" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/js/a-star.js" asp-append-version="true"></script>
+<script src="~/js/speak.js" asp-append-version="true"></script>
+<script src="~/js/microphone.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/script.js" asp-append-version="true"></script>
